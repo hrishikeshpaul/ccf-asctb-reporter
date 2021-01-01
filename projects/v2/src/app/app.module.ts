@@ -33,7 +33,7 @@ import { SidenavHeaderComponent } from './components/sidenav-header/sidenav-head
 import { ReportComponent } from './components/report/report.component';
 import { DebugLogsComponent } from './components/debug-logs/debug-logs.component';
 import { LogsState } from './store/logs.state';
-
+import { LegendComponent } from './components/legend/legend.component';
 
 
 @NgModule({
@@ -51,7 +51,8 @@ import { LogsState } from './store/logs.state';
     SidenavComponent,
     SidenavHeaderComponent,
     ReportComponent,
-    DebugLogsComponent
+    DebugLogsComponent,
+    LegendComponent
   ],
   imports: [
     BrowserModule,
