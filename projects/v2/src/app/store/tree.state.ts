@@ -12,7 +12,7 @@ import { UpdateVegaSpec, UpdateVegaView, UpdateBimodal, UpdateBimodalConfig, DoS
 import { TNode, SearchStructure } from '../models/tree.model';
 import { BMNode, Link, BimodalConfig } from '../models/bimodal.model';
 
-import { validateWidth } from "../static/util";
+import { validateWidth } from '../static/util';
 
 export class TreeStateModel {
   spec: Spec;
@@ -130,7 +130,7 @@ export class TreeState {
     setState({
       ...state,
       search: searchStructures
-    })
+    });
   }
 
   @Action(UpdateGraphWidth)
@@ -139,6 +139,6 @@ export class TreeState {
     setState({
       ...state,
       screenWidth: validateWidth(width)
-    })
+    });
   }
 }

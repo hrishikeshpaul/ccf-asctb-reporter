@@ -1,1 +1,21 @@
-<p>legend works!</p>
+
+<div>
+ 
+    <mat-expansion-panel class="mepNoPadding mt-5" expanded>
+        <mat-expansion-panel-header [expandedHeight]="'50px'"> 
+          <mat-panel-title>
+            <div>
+              <b>
+                Legend
+              </b>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="py-1">
+          <ul>
+            <li class="circle" *ngFor="let legend of legends"> {{legend.name}}
+            </li>
+          </ul>
+        </div>
+    </mat-expansion-panel>
+</div>

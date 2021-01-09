@@ -7,14 +7,14 @@ import { Sheet } from '../../models/sheet.model';
   styleUrls: ['./debug-logs.component.scss']
 })
 export class DebugLogsComponent implements OnInit {
-  
+
   @Input() currentSheet: Sheet;
   @Input() logs: any;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.logs)
+    console.log(this.logs);
   }
 
 }

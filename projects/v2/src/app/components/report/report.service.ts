@@ -18,14 +18,14 @@ export class ReportService {
   constructor() { }
 
   async makeReportData( currentSheet: Sheet, data: any) {
-    let output: Report = {
+    const output: Report = {
       anatomicalStructures: [],
       cellTypes: [],
       biomarkers: [],
       ASWithNoLink: [],
       CTWithNoLink: [],
       BWithNoLink: []
-    }
+    };
 
     try {
       output.anatomicalStructures = await makeAS(data, {
@@ -47,11 +47,11 @@ export class ReportService {
         uberon_col: currentSheet.uberon_col
       });
 
-    
-      let organName: AS = {
+
+      const organName: AS = {
         structure: currentSheet.name,
         uberon: 'NONE'
-      }
+      };
 
       output.anatomicalStructures.unshift(organName);
 
@@ -62,7 +62,7 @@ export class ReportService {
       this.reportData.next({
         data: output,
         sheet: currentSheet
-      })
+      });
 
 
       // if (this.compareData.length) {
@@ -76,7 +76,7 @@ export class ReportService {
       throw err;
     }
   }
-  
+
   getASWithNoLink(AS) {
     const noLinks = [];
     AS.forEach((ele) => {

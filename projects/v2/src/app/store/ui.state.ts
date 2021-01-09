@@ -151,7 +151,7 @@ export class UIState {
       loadingText: '',
     });
 
-    dispatch(new OpenSnackbar(text, SnackbarType.success))
+    dispatch(new OpenSnackbar(text, SnackbarType.success));
   }
 
   @Action(HasError)
@@ -159,7 +159,7 @@ export class UIState {
     const state = getState();
     setState({
       ...state,
-      error: error,
+      error,
       loading: false,
       loadingText: '',
       snackbar: { opened: true, text: error.msg, type: SnackbarType.error }
@@ -172,7 +172,7 @@ export class UIState {
     setState({
       ...state,
       indentListOpen: !state.indentListOpen
-    })
+    });
   }
 
   @Action(ToggleReport)
@@ -181,19 +181,19 @@ export class UIState {
     setState({
       ...state,
       reportOpen: !state.reportOpen
-    })
+    });
   }
 
   @Action(CloseRightSideNav)
   closeRightSideNav({ getState, setState }: StateContext<UIStateModel>) {
     const state = getState();
-    const rsn = !state.rightSideNavOpen
+    const rsn = !state.rightSideNavOpen;
     setState({
       ...state,
       indentListOpen: false,
       reportOpen: false,
       debugLogOpen: false
-    })
+    });
   }
 
   @Action(ToggleDebugLogs)
@@ -202,6 +202,6 @@ export class UIState {
     setState({
       ...state,
       debugLogOpen: !state.debugLogOpen
-    })
+    });
   }
 }

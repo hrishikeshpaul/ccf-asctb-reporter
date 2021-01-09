@@ -48,7 +48,7 @@ export class IndentedListService {
       data: root,
       sheet: currentSheet.display
     });
-    
+
     return {
       data: root,
       sheet: currentSheet.display
@@ -56,6 +56,6 @@ export class IndentedListService {
   }
 
   getIndentData(): Observable<any> {
-    return this.indentData.asObservable()
+    return this.indentData.asObservable();
   }
 }

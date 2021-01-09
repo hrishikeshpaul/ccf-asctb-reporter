@@ -62,7 +62,7 @@ export class TreeService {
       this.height = state.height;
       this.screenWidth = state.screenWidth;
       const view = state.view;
-      
+
       if (Object.keys(view).length) {
         const search = state.search;
         view.data('search', search);
@@ -72,7 +72,7 @@ export class TreeService {
 
     this.uiState$.subscribe(state => {
       this.controlPaneOpen = state.controlPaneOpen;
-    })
+    });
 
    }
 
@@ -120,7 +120,7 @@ export class TreeService {
                   if (searchedNode.problem) {
                     if (currentSheet.name !== 'ao') {
                       if (!searchedNode.parents.includes(searchedNode.id)) {
-                        this.store.dispatch(new ReportLog(LOG_TYPES.MULTI_IN_LINKS, searchedNode.name, LOG_ICONS.warning))
+                        this.store.dispatch(new ReportLog(LOG_TYPES.MULTI_IN_LINKS, searchedNode.name, LOG_ICONS.warning));
                         // this.report.reportLog(`Nodes with multiple in-links`, 'warning', 'multi', searchedNode.name);
                       }
                     }
@@ -154,7 +154,7 @@ export class TreeService {
         if (node.problem) {
           for (const p of node.parents) {
             if (p === node.id) {
-              this.store.dispatch(new ReportLog(LOG_TYPES.SELF_LINKS, node.name, LOG_ICONS.warning))
+              this.store.dispatch(new ReportLog(LOG_TYPES.SELF_LINKS, node.name, LOG_ICONS.warning));
               // this.report.reportLog(`Nodes with self-links`, 'warning', 'multi', node.name);
             }
             linkData.push({

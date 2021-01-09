@@ -67,22 +67,22 @@ export class RootComponent implements OnInit, OnDestroy{
   @Select(LogsState) logs$: Observable<any>;
 
   constructor(
-    public store: Store, 
-    public ts: TreeService, 
-    public route: ActivatedRoute, 
-    public dialog: MatDialog, 
+    public store: Store,
+    public ts: TreeService,
+    public route: ActivatedRoute,
+    public dialog: MatDialog,
     private snackbar: MatSnackBar,
     public indent: IndentedListService,
     public report: ReportService
   ) {
-    
+
     this.data$.subscribe(data => {
       if (data.length) {
         this.data = data;
         try {
           this.ts.makeTreeData(this.sheet, data, []);
         } catch (err) {
-          this.store.dispatch(new HasError({hasError: true, msg: err, status: 400}))
+          this.store.dispatch(new HasError({hasError: true, msg: err, status: 400}));
         }
       }
     });
@@ -104,12 +104,12 @@ export class RootComponent implements OnInit, OnDestroy{
               status: error.status,
               hasError: true
             };
-            store.dispatch(new ReportLog(LOG_TYPES.MSG, 'Failed to fetch data', LOG_ICONS.error))
+            store.dispatch(new ReportLog(LOG_TYPES.MSG, 'Failed to fetch data', LOG_ICONS.error));
             store.dispatch(new HasError(err));
           }
         );
       } else {
-        
+
         store.dispatch(new FetchDataFromAssets(version, this.sheet)).subscribe(
           () => {},
           (error) => {
@@ -118,7 +118,7 @@ export class RootComponent implements OnInit, OnDestroy{
               status: error.status,
               hasError: true
             };
-            store.dispatch(new ReportLog(LOG_TYPES.MSG, 'Failed to fetch data from assets', LOG_ICONS.error, version))
+            store.dispatch(new ReportLog(LOG_TYPES.MSG, 'Failed to fetch data from assets', LOG_ICONS.error, version));
             store.dispatch(new HasError(err));
           }
         );
@@ -146,13 +146,14 @@ export class RootComponent implements OnInit, OnDestroy{
         this.snackbarRef = this.snackbar.open(sb.text, 'Dismiss', config);
         this.snackbarRef.afterDismissed().subscribe(s => { store.dispatch(new CloseSnackbar()); });
       }
-    })
+    });
 
 
     this.pane$.subscribe(value => {
-      if (this.data)
+      if (this.data) {
         ts.makeTreeData(this.sheet, this.data, []);
-    })
+      }
+    });
 
     // this.logs$.subscribe(logs => {
     //   const sheetLogs = logs.sheetLogs;

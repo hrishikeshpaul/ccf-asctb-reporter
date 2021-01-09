@@ -112,7 +112,7 @@ export class BimodalService {
           c.nodeSize = tempCellTypes[idx].parents.length * 75;
         } else {
           this.store.dispatch(new ReportLog(LOG_TYPES.MSG, `Parent not found for cell - ${c.structure}`, LOG_ICONS.warning));
-          
+
           // this.report.reportLog(
           //   `Parent not found for cell - ${c.structure}`,
           //   'warning',
@@ -314,22 +314,22 @@ export class BimodalService {
       view._runtime.signals.targets__click.value = [];
       view.data('nodes', nodes).data('edges', links).resize().runAsync();
       this.store.dispatch(new CloseLoading('Visualization Rendered'));
-      this.store.dispatch(new ReportLog(LOG_TYPES.MSG, 'Visualization successfully rendered', LOG_ICONS.success))
+      this.store.dispatch(new ReportLog(LOG_TYPES.MSG, 'Visualization successfully rendered', LOG_ICONS.success));
 
   }
 
   checkLinks(data) {
     data.forEach(node => {
       if (node.targets.length === 0 && node.group === 2) {
-        this.store.dispatch(new ReportLog(LOG_TYPES.NO_OUT_LINKS, node.name, LOG_ICONS.warning))
+        this.store.dispatch(new ReportLog(LOG_TYPES.NO_OUT_LINKS, node.name, LOG_ICONS.warning));
       }
 
       if (node.sources.length === 0 && node.group === 2) {
-        this.store.dispatch(new ReportLog(LOG_TYPES.NO_IN_LINKS, node.name, LOG_ICONS.warning))
+        this.store.dispatch(new ReportLog(LOG_TYPES.NO_IN_LINKS, node.name, LOG_ICONS.warning));
       }
 
       if (node.sources.length === 0 && node.group === 3) {
-        this.store.dispatch(new ReportLog(LOG_TYPES.NO_IN_LINKS, node.name, LOG_ICONS.warning))
+        this.store.dispatch(new ReportLog(LOG_TYPES.NO_IN_LINKS, node.name, LOG_ICONS.warning));
       }
     });
   }

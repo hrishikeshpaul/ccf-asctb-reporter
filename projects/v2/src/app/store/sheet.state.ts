@@ -49,7 +49,7 @@ export class SheetStateModel {
       },
       title: '',
     },
-    
+
   }
 })
 @Injectable()
@@ -86,10 +86,10 @@ export class SheetState {
           ...state,
           data: parsedData.data,
           version: 'latest',
-          sheet: sheet
+          sheet
         });
-        
-        dispatch(new ReportLog(LOG_TYPES.MSG,`${sheet.display} data successfully fetched.`, LOG_ICONS.success));
+
+        dispatch(new ReportLog(LOG_TYPES.MSG, `${sheet.display} data successfully fetched.`, LOG_ICONS.success));
         dispatch(new UpdateLoadingText('Fetch data successful. Building Visualization..'));
 
       })
@@ -97,7 +97,7 @@ export class SheetState {
   }
 
   @Action(FetchDataFromAssets)
-  fetchDataFromAssets({getState, setState, dispatch}: StateContext<SheetStateModel>, {version, sheet}:FetchDataFromAssets) {
+  fetchDataFromAssets({getState, setState, dispatch}: StateContext<SheetStateModel>, {version, sheet}: FetchDataFromAssets) {
     const state = getState();
     dispatch(new OpenLoading('Fetching data from assets..'));
     dispatch(new StateReset(TreeState));
@@ -112,11 +112,11 @@ export class SheetState {
 
         setState({
           ...state,
-          version: version,
+          version,
           data: parsedData.data,
-          sheet: sheet,
+          sheet,
         });
-        dispatch(new ReportLog(LOG_TYPES.MSG,`${sheet.display} data successfully fetched from assets.`, LOG_ICONS.success, version));
+        dispatch(new ReportLog(LOG_TYPES.MSG, `${sheet.display} data successfully fetched from assets.`, LOG_ICONS.success, version));
         dispatch(new UpdateLoadingText('Fetch data successful. Building Visualization..'));
 
       })

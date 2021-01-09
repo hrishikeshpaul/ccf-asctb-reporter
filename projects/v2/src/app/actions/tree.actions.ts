@@ -30,4 +30,4 @@ export class DoSearch {
   static readonly type = '[SEARCH] Update Search List';
   constructor(public searchStructures: SearchStructure[]) {}
 }
- 
+

@@ -51,23 +51,23 @@ export class SearchComponent implements OnInit {
     public bms: BimodalService,
     public store: Store
   ) {
-    
+
     this.tree$.subscribe(tree => {
-      this.structuresMultiCtrl.setValue(tree.search)
+      this.structuresMultiCtrl.setValue(tree.search);
       this.treeData = tree.treeData;
       this.nodes = tree.bimodal.nodes;
-    })
+    });
   }
 
 
   ngOnInit() {
-    
+
   }
 
   createSearchList() {
-    let searchSet = new Set<SearchStructure>();
+    const searchSet = new Set<SearchStructure>();
 
-      for (const node of this.treeData) {
+    for (const node of this.treeData) {
         if (node.children !== 0) {
           searchSet.add({
             id: node.id,
@@ -80,7 +80,7 @@ export class SearchComponent implements OnInit {
 
       }
 
-      for (const node of this.nodes) {
+    for (const node of this.nodes) {
         searchSet.add({
           id: node.id,
           name: node.name,
@@ -90,8 +90,8 @@ export class SearchComponent implements OnInit {
         });
       }
 
-      this.structures = [...searchSet];
-      this.filteredstructuresMulti.next(this.structures.slice());
+    this.structures = [...searchSet];
+    this.filteredstructuresMulti.next(this.structures.slice());
   }
 
   ngAfterViewInit() {
@@ -99,7 +99,7 @@ export class SearchComponent implements OnInit {
     this.structuresMultiFilterCtrl.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe((r) => {
-        this.store.dispatch(new DoSearch(this.structuresMultiCtrl.value))
+        this.store.dispatch(new DoSearch(this.structuresMultiCtrl.value));
         this.filterstructuressMulti();
       });
     this.filteredstructuresMulti

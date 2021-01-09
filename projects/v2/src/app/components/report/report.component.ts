@@ -29,7 +29,7 @@ export class ReportComponent implements OnInit {
   ngOnInit(): void {
     this.reportService.reportData$.subscribe(data => {
       this.reportData = data.data;
-    })
+    });
 
     this.reportService.makeReportData(this.currentSheet, this.sheetData);
   }

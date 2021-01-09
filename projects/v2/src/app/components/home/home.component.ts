@@ -12,7 +12,7 @@ import { SHEET_OPTIONS } from '../../static/config';
 export class HomeComponent implements OnInit {
   window = window;
   screenWidth = document.getElementsByTagName('body')[0].clientWidth;
-  dataVersion: string = 'latest';
+  dataVersion = 'latest';
   SHEET_OPTIONS = SHEET_OPTIONS;
 
   constructor() {

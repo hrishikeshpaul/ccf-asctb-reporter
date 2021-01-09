@@ -15,6 +15,6 @@ export class SheetService {
   }
 
   fetchDataFromAssets(dataVersion: string, currentSheet: any) {
-    return this.http.get(getAssetsURL(dataVersion, currentSheet), { responseType: 'text' })
+    return this.http.get(getAssetsURL(dataVersion, currentSheet), { responseType: 'text' });
   }
 }
